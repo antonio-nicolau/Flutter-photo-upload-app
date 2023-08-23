@@ -40,6 +40,7 @@ dependencies:
   better_open_file: ^3.6.4
   firebase_core: ^2.15.1
   firebase_storage: ^11.2.6
+  cloud_firestore: ^4.9.0
 
 dev_dependencies:
   flutter_test:
