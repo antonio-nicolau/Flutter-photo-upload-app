@@ -38,6 +38,7 @@ dependencies:
   camerawesome: ^1.4.0
   path_provider: ^2.1.0
   better_open_file: ^3.6.4
+  firebase_core: ^2.15.1
 
 dev_dependencies:
   flutter_test:
