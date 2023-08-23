@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wisy_image_uploader/src/modules/new_image/new_image_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +21,12 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const NewImagePage()),
+          );
+        },
         tooltip: 'New image',
         child: const Icon(Icons.add),
       ),
