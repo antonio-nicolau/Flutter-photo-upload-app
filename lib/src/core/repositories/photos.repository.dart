@@ -13,7 +13,7 @@ class PhotosRepository implements IPhotosRepository {
   }
 
   @override
-  Stream<QuerySnapshot<Photo>> getAll() {
+  Stream<List<Photo>> getAll() {
     final reference = _firestore
         .collection('photos')
         .withConverter(
@@ -22,6 +22,6 @@ class PhotosRepository implements IPhotosRepository {
         )
         .snapshots();
 
-    return reference;
+    return reference.asyncMap((event) => event.docs.map((e) => e.data()).toList());
   }
 }

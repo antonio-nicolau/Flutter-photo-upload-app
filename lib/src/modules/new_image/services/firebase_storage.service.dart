@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:wisy_image_uploader/src/modules/new_image/services/remote_storage.service.interface.dart';
 
-class FirebaseCloudStorage implements IRemoteStorage {
+class FirebaseCloudStorage implements RemoteStorage {
   final FirebaseStorage _instance;
   const FirebaseCloudStorage(this._instance);
 
@@ -13,8 +13,6 @@ class FirebaseCloudStorage implements IRemoteStorage {
     try {
       await imagesRef.putFile(file);
       return imagesRef.getDownloadURL();
-    } on FirebaseException catch (e) {
-      print('Error uploading: ${e.message} - ${e.code}');
     } catch (e) {
       print(e.toString());
     }
