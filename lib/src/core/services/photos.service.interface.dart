@@ -1,19 +1,14 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wisy_image_uploader/src/core/model/photo.model.dart';
 import 'package:wisy_image_uploader/src/core/repositories/photos.repository.interface.dart';
 import 'package:wisy_image_uploader/src/core/services/photos.service.dart';
 
-class PhotosService implements IPhotosService {
-  final IPhotosRepository _repository;
+final photosServiceProvider = Provider<IPhotosService>((ref) {
+  final repository = ref.read(photosRepositoryProvider);
+  return PhotosService(repository);
+});
 
-  const PhotosService(this._repository);
-
-  @override
-  Future<void> create(Photo photo) async {
-    _repository.create(photo);
-  }
-
-  @override
-  Stream<List<Photo>> getAll() {
-    return _repository.getAll();
-  }
+abstract class IPhotosService {
+  Future<bool> create(Photo photo);
+  Stream<List<Photo>> getAll();
 }
