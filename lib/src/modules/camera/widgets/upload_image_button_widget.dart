@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wisy_image_uploader/src/core/model/photo.model.dart';
 import 'package:wisy_image_uploader/src/core/services/photos.service.interface.dart';
-import 'package:wisy_image_uploader/src/modules/new_image/services/remote_storage.service.interface.dart';
+import 'package:wisy_image_uploader/src/modules/camera/services/remote_storage.service.interface.dart';
 
 enum UploadState { failed, loading, success, none }
 

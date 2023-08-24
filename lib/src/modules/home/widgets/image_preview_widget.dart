@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:wisy_image_uploader/src/modules/new_image/widgets/upload_image_button_widget.dart';
+import 'package:wisy_image_uploader/src/modules/camera/widgets/upload_image_button_widget.dart';
 
 class ImagePreview extends StatelessWidget {
   const ImagePreview({

@@ -4,7 +4,7 @@ import 'package:wisy_image_uploader/src/core/utils/functions.dart';
 import 'package:wisy_image_uploader/src/modules/home/state/home_state.dart';
 import 'package:wisy_image_uploader/src/modules/home/widgets/empty_page.dart';
 import 'package:wisy_image_uploader/src/modules/home/widgets/loading_widget.dart';
-import 'package:wisy_image_uploader/src/modules/new_image/pages/new_image_page.dart';
+import 'package:wisy_image_uploader/src/modules/camera/pages/camera_page.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -51,7 +51,7 @@ class HomePage extends ConsumerWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => const NewImagePage()),
+            MaterialPageRoute(builder: (_) => const CameraPage()),
           );
         },
         child: const Icon(Icons.add),

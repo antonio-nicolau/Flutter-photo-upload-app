@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:wisy_image_uploader/src/modules/new_image/services/remote_storage.service.interface.dart';
+import 'package:wisy_image_uploader/src/modules/camera/services/remote_storage.service.interface.dart';
 
 class FirebaseCloudStorage implements RemoteStorage {
   final FirebaseStorage _instance;

@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:wisy_image_uploader/src/core/utils/functions.dart';
 
-class NewImagePage extends ConsumerWidget {
-  const NewImagePage({super.key});
+class CameraPage extends ConsumerWidget {
+  const CameraPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
