@@ -21,7 +21,7 @@ void showPreviewPage({
     builder: (_) {
       return AlertDialog(
         contentPadding: EdgeInsets.zero,
-        content: ImagePreview(file: file, showUploadButton: true),
+        content: ImagePreview(file: file, url: url, showUploadButton: true),
       );
     },
   );

@@ -22,7 +22,10 @@ class UploadImageButton extends ConsumerWidget {
 
     void upload() async {
       if (uploading == UploadState.loading) return;
-      if (uploading == UploadState.success) Navigator.pop(context);
+      if (uploading == UploadState.success) {
+        Navigator.pop(context);
+        return;
+      }
 
       ref.read(imageUploadingProvider.notifier).state = UploadState.loading;
       final downloadUrl = await ref.read(remoteStorageProvider).upload(file);

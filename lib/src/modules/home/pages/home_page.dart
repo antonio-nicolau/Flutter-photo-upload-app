@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wisy_image_uploader/src/core/utils/extensions.dart';
 import 'package:wisy_image_uploader/src/core/utils/functions.dart';
 import 'package:wisy_image_uploader/src/modules/home/state/home_state.dart';
 import 'package:wisy_image_uploader/src/modules/home/widgets/empty_page.dart';
 import 'package:wisy_image_uploader/src/modules/home/widgets/loading_widget.dart';
 import 'package:wisy_image_uploader/src/modules/camera/pages/camera_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:wisy_image_uploader/src/modules/settings/pages/settings_page.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -17,6 +19,14 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.goTo(const SettingsPage());
+            },
+            icon: const Icon(Icons.settings),
+          ),
+        ],
       ),
       body: photosAsync.when(
         data: (photos) {
@@ -28,16 +38,17 @@ class HomePage extends ConsumerWidget {
             itemBuilder: (context, index) {
               final photo = photos[index];
               return GestureDetector(
-                  onTap: () {
-                    showPreviewPage(context: context, url: photo.url);
+                onTap: () {
+                  showPreviewPage(context: context, url: photo.url);
+                },
+                child: Image.network(
+                  photo.url,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const LoadingWidget();
                   },
-                  child: Image.network(
-                    photo.url,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return const LoadingWidget();
-                    },
-                  ));
+                ),
+              );
             },
           );
         },
@@ -50,10 +61,7 @@ class HomePage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const CameraPage()),
-          );
+          context.goTo(const CameraPage());
         },
         child: const Icon(Icons.add),
       ),
