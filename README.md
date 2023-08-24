@@ -2,6 +2,8 @@
 
 This is a Flutter project created as a code challenge for the Flutter Developer role. The goal of this app is to allow users to capture and upload photos using their device's camera. The app utilizes Riverpod for state management, the CameraAwesome package for camera functionality, and Firebase for photo storage and Firestore for tracking uploads.
 
+This app has support for two languages: English and Spanish. You can change the language on app's settings
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -9,9 +11,7 @@ This is a Flutter project created as a code challenge for the Flutter Developer 
 - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
+- [App Running](#app-running) 
 
 ## Getting Started
 
@@ -84,9 +84,20 @@ The project is structured as follows:
 4. After capturing a photo, it will be uploaded to Firebase Storage.
 5. A document containing information about the upload (e.g., URL, timestamp) will be created in Firestore.
 6. Return to the home screen to see a list of all uploaded photos.
+7. Preview any image on the list
+8. Change app language on Settings
 
-## Screenshots
+## App running
 
-![Home Screen](screenshots/home_screen.png)
-![Camera Screen](screenshots/camera_screen.png)
+
+
+
+https://github.com/antonio-nicolau/wish-image-uploader/assets/67912928/f31221df-f2fa-49eb-8083-69892e3bbb5a
+
+
+
+https://github.com/antonio-nicolau/wish-image-uploader/assets/67912928/10db6d18-5133-41d5-b451-dcfdf7300b8b
+
+
+
 
