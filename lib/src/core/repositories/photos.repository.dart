@@ -8,8 +8,14 @@ class PhotosRepository implements IPhotosRepository {
   const PhotosRepository(this._firestore);
 
   @override
-  Future<void> create(Photo photo) async {
-    await _firestore.collection('photos').add(photo.toMap());
+  Future<bool> create(Photo photo) async {
+    final reference = await _firestore.collection('photos').add(photo.toMap());
+
+    if (reference.id.isNotEmpty) {
+      return true;
+    } else {
+      throw Exception();
+    }
   }
 
   @override

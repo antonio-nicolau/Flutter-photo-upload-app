@@ -8,6 +8,6 @@ final photosRepositoryProvider = Provider<IPhotosRepository>((ref) {
 });
 
 abstract class IPhotosRepository {
-  Future<void> create(Photo photo);
+  Future<bool> create(Photo photo);
   Stream<List<Photo>> getAll();
 }
