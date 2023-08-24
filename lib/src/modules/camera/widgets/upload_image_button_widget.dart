@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wisy_image_uploader/src/core/model/photo.model.dart';
 import 'package:wisy_image_uploader/src/core/services/photos.service.interface.dart';
 import 'package:wisy_image_uploader/src/modules/camera/services/remote_storage.service.interface.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum UploadState { failed, loading, success, none }
 
@@ -20,7 +21,8 @@ class UploadImageButton extends ConsumerWidget {
     final uploading = ref.watch(imageUploadingProvider);
 
     void upload() async {
-      if (uploading == UploadState.loading || uploading == UploadState.success) return;
+      if (uploading == UploadState.loading) return;
+      if (uploading == UploadState.success) Navigator.pop(context);
 
       ref.read(imageUploadingProvider.notifier).state = UploadState.loading;
       final downloadUrl = await ref.read(remoteStorageProvider).upload(file);
@@ -47,9 +49,9 @@ class UploadImageButton extends ConsumerWidget {
         ),
         child: Text(
           switch (uploading) {
-            UploadState.loading => 'Uploading...',
-            UploadState.success => 'Done',
-            _ => 'Click to upload',
+            UploadState.loading => AppLocalizations.of(context)!.uploading,
+            UploadState.success => AppLocalizations.of(context)!.done,
+            _ => AppLocalizations.of(context)!.click_to_upload,
           },
           style: Theme.of(context).textTheme.titleLarge,
         ),

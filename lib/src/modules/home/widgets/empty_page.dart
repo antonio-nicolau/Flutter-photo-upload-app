@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmptyCards extends StatelessWidget {
   const EmptyCards({super.key});
@@ -13,13 +14,13 @@ class EmptyCards extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "You don't have any photos yet",
+            AppLocalizations.of(context)!.you_dont_have_photos,
             style: Theme.of(context).textTheme.titleLarge,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
           Text(
-            "Start taking some 👇🏿",
+            '${AppLocalizations.of(context)!.take_some_photos} 👇🏿',
             style: Theme.of(context).textTheme.titleLarge,
             textAlign: TextAlign.center,
           ),

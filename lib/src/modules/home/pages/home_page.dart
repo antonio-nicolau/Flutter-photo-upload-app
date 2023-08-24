@@ -5,6 +5,7 @@ import 'package:wisy_image_uploader/src/modules/home/state/home_state.dart';
 import 'package:wisy_image_uploader/src/modules/home/widgets/empty_page.dart';
 import 'package:wisy_image_uploader/src/modules/home/widgets/loading_widget.dart';
 import 'package:wisy_image_uploader/src/modules/camera/pages/camera_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -41,7 +42,7 @@ class HomePage extends ConsumerWidget {
           );
         },
         error: (error, _) {
-          return const Center(child: Text('Error loading photos'));
+          return Center(child: Text(AppLocalizations.of(context)!.error_loading_photos));
         },
         loading: () {
           return const LoadingWidget();
