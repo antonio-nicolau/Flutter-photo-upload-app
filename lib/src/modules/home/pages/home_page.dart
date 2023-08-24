@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wisy_image_uploader/src/core/utils/functions.dart';
 import 'package:wisy_image_uploader/src/modules/home/state/home_state.dart';
 import 'package:wisy_image_uploader/src/modules/home/widgets/empty_page.dart';
-import 'package:wisy_image_uploader/src/modules/home/widgets/image_preview_widget.dart';
-import 'package:wisy_image_uploader/src/modules/new_image/new_image_page.dart';
+import 'package:wisy_image_uploader/src/modules/home/widgets/loading_widget.dart';
+import 'package:wisy_image_uploader/src/modules/new_image/pages/new_image_page.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -27,17 +28,15 @@ class HomePage extends ConsumerWidget {
               final photo = photos[index];
               return GestureDetector(
                   onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) {
-                        return AlertDialog(
-                          contentPadding: EdgeInsets.zero,
-                          content: ImagePreview(photo.url),
-                        );
-                      },
-                    );
+                    showPreviewPage(context: context, url: photo.url);
                   },
-                  child: Image.network(photo.url));
+                  child: Image.network(
+                    photo.url,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return const LoadingWidget();
+                    },
+                  ));
             },
           );
         },
@@ -45,7 +44,7 @@ class HomePage extends ConsumerWidget {
           return const Center(child: Text('Error loading photos'));
         },
         loading: () {
-          return const Center(child: CircularProgressIndicator());
+          return const LoadingWidget();
         },
       ),
       floatingActionButton: FloatingActionButton(

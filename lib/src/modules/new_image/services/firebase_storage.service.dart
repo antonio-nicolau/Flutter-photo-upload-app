@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:wisy_image_uploader/src/modules/new_image/services/remote_storage.service.interface.dart';
@@ -14,7 +15,7 @@ class FirebaseCloudStorage implements RemoteStorage {
       await imagesRef.putFile(file);
       return imagesRef.getDownloadURL();
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
     }
 
     return imagesRef.fullPath;

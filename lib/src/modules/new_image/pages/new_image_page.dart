@@ -1,13 +1,9 @@
-import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
 import 'package:camerawesome/camerawesome_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:wisy_image_uploader/src/core/model/photo.model.dart';
-import 'package:wisy_image_uploader/src/core/services/photos.service.dart';
-import 'package:wisy_image_uploader/src/modules/new_image/services/remote_storage.service.interface.dart';
+import 'package:wisy_image_uploader/src/core/utils/functions.dart';
 
 class NewImagePage extends ConsumerWidget {
   const NewImagePage({super.key});
@@ -26,16 +22,11 @@ class NewImagePage extends ConsumerWidget {
 
             final file = File(event.filePath);
 
-            final downloadUrl = await ref.read(remoteStorageProvider).upload(file);
-
-            if (downloadUrl != null) {
-              final photo = Photo(
-                name: file.uri.pathSegments.last.split('.').first,
-                url: downloadUrl,
-              );
-              if (!context.mounted) return;
-              ref.read(photosServiceProvider).create(photo);
-            }
+            showPreviewPage(
+              context: context,
+              file: file,
+              showUploadButton: true,
+            );
           });
 
           return AwesomeBottomActions(
@@ -63,11 +54,5 @@ class NewImagePage extends ConsumerWidget {
 
     final file = await File('${extDir.path}/$fileName').create();
     return File(file.path).path;
-  }
-
-  String getRandString() {
-    var random = Random.secure();
-    var values = List<int>.generate(15, (i) => random.nextInt(255));
-    return base64UrlEncode(values);
   }
 }
