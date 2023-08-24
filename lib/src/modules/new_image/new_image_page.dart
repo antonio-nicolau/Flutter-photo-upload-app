@@ -33,6 +33,7 @@ class NewImagePage extends ConsumerWidget {
                 name: file.uri.pathSegments.last.split('.').first,
                 url: downloadUrl,
               );
+              if (!context.mounted) return;
               ref.read(photosServiceProvider).create(photo);
             }
           });

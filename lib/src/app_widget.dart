@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wisy_image_uploader/src/modules/home/home_page.dart';
+import 'package:wisy_image_uploader/src/modules/home/pages/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
