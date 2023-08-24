@@ -1,25 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Photo {
-  final String name;
+  final int timestamp;
   final String url;
 
-  const Photo({required this.name, required this.url});
+  const Photo({required this.timestamp, required this.url});
 
   factory Photo.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
     SnapshotOptions? options,
   ) {
     return Photo(
-      name: snapshot['name'],
+      timestamp: snapshot['timestamp'],
       url: snapshot['url'],
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
       'url': url,
+      'timestamp': timestamp,
     };
   }
 }

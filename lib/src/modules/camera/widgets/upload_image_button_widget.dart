@@ -32,7 +32,7 @@ class UploadImageButton extends ConsumerWidget {
 
       if (downloadUrl != null) {
         final photo = Photo(
-          name: file.uri.pathSegments.last.split('.').first,
+          timestamp: DateTime.now().millisecondsSinceEpoch,
           url: downloadUrl,
         );
         if (!context.mounted) return;
