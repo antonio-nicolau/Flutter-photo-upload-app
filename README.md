@@ -82,7 +82,8 @@ The project is structured as follows:
   - **services**: Contains Firebase-related services for photo storage and Firestore interaction.
   - **models**: Defines data models used in the app.
   - **src**: Contains `firebase_options.dart`.
-- test: Contains all tests for the project.
+- test: Contains all unit tests for the project.
+- integration_test: Contains all integration tests for the project
 
 ## Usage
 
