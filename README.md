@@ -26,25 +26,21 @@ Before you begin, make sure you have the following prerequisites installed:
 
 ## Installation
 
-1. Clone the repository to your local machine:
 
-   ```bash
-   git clone https://github.com/your-username/flutter-photo-upload.git
-   ```
 
-2. Navigate to the project directory:
+1. Navigate to the project directory:
 
    ```bash
    cd flutter-photo-upload
    ```
 
-3. Install the project dependencies:
+2. Install the project dependencies:
 
    ```bash
    flutter pub get
    ```
 
-4. Configure Firebase for your project by running the following command:
+3. Configure Firebase for your project by running the following command:
 
    ```bash
    firebase login
@@ -52,9 +48,21 @@ Before you begin, make sure you have the following prerequisites installed:
    flutterfire configure
    ```
 
-5. Move the generated `firebase_options.dart` file to the `src` directory.
+4. Move the generated `firebase_options.dart` file to the `src` directory.
+5. Create a Firebase project and set up Firebase Authentication, Firebase Storage, and Cloud Firestore in the Firebase Console.
+6. Important: Update the Firestore Security Rules to allow read and write access without authentication for testing purposes. Replace the existing rules with the following in the Firebase Console:
+   ```
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /{document=**} {
+         allow read, write: if request.time < timestamp.date(2023, 9, 22);
+       }
+     }
+   }
+   ```
 
-6. Run the app on your emulator or physical device:
+
+7. Run the app on your emulator or physical device:
 
    ```bash
    flutter run
