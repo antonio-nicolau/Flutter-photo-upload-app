@@ -4,6 +4,6 @@ final List<Photo> mockPhotos = List.generate(
   5,
   (index) => Photo(
     timestamp: DateTime.now().millisecondsSinceEpoch,
-    url: 'https://example.com/photo_$index.jpg',
+    url: 'https://picsum.photos/200',
   ),
 );
