@@ -22,6 +22,7 @@ class LanguageSelector extends ConsumerWidget {
         ),
         const SizedBox(height: 10),
         DropdownButton<Language>(
+          key: const ValueKey('dropdown'),
           value: selectedLanguage,
           onChanged: (Language? value) {
             if (value == null) return;
